@@ -7,12 +7,13 @@
 // printa no display da calculadora o resultado
 // testa se a expressao é valida/caso nao seja, printa erro no display
 
-let currentInput = '';
-let tela = document.getElementById("tela");
+let display = document.getElementById("display");
+let currentInput = ""
+let currentOperator = ""
 
-function addNumber(value) {
-    currentInput += value;
-    tela.textContent = currentInput;
+function addNumber(value){
+    currentInput += value
+    tela.textContent = currentInput
 }
 
 function addOperator(operator) {
@@ -20,53 +21,40 @@ function addOperator(operator) {
 
     let srepeticao = currentInput.slice(-1);
 
+   
     if (["+", "x", "/", "."].includes(srepeticao) && ["+", "x", "/", "."].includes(operator)) {
         alert("Não é permitido inserir dois operadores iguais consecutivamente");
         return;
     }
 
-    // oermitir negativo após um operador (exemplo: 5 + -3)
+    // Permitir negativo após um operador (exemplo: 5 + -3)
     if (srepeticao === "-" && ["+", "x", "/"].includes(operator)) return;
 
     currentInput += operator;
     tela.textContent = currentInput;
 }
-
-function clean() {
-    currentInput = '';
-    tela.textContent = '';
+function clean(){
+    currentInput= " ";
+    tela.textContent = " ";
 }
 
-function del() {
-    currentInput = currentInput.slice(0, -1);
-    tela.textContent = currentInput;
+function del(){
+    currentInput = currentInput.slice(0, -1)
+    tela.textContent = currentInput
 }
 
-
-async function calculate() {
+function calculate(){
     if (!currentInput) return;
 
+    currentInput = currentInput.replace(/x/g, '*');
+
     try {
-        // faz requisição POST para o backend com a expressão
-        const response = await fetch('http://localhost:3000/calcular', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                expressao: currentInput.replace('x', '*') // troca 'x' por '*'
-            })
-        });
+        let result = new Function('return '+ currentInput) ()
+        tela.textContent = result;
+        currentInput = result.toString();
 
-        const result = await response.json(); //aqui a constante result recebe so dps da resposta .json
-
-        if (response.ok) {
-            tela.textContent = result.resultado;
-            currentInput = result.resultado.toString(); // atualiza a entrada com o resultado
-        } else {
-            tela.textContent = result.erro;
-        }
     } catch (error) {
-        tela.textContent = "Erro mano";
+        tela.textContent = "Erro";
+        currentInput = "";
     }
 }
