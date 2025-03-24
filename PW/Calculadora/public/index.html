@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Calculadora</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="./midias/calculadora.png">
+   
+    <link rel="icon" type="image/x-icon" href="./midias/calculator.png">
 </head>
-<body>
-    <video autoplay loop muted id="background-video">
-        <source src="./midias/0_Mathematics_Physics_3840x2160.mp4" type="video/mp4">
-      </video>      
+<body>  
     <div class="calculadora">
         <div class="tela" id="tela"></div>
             <div class="botoes">
-                <button class="button-gray" id="t" onclick="del()" ></button>
+                <button class="button-gray" id="t" onclick="del()" ><img src="./midias/back.svg"></button>
                 <button class="button-gray" onclick="clean()" >AC</button>
                 <button class="button-gray" onclick="addOperator('x')">X</button>
                 <button class="button-gray" onclick="addOperator('/')" >/</button>
