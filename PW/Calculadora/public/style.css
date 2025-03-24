@@ -6,7 +6,8 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgb(0, 0, 0);
+    background: rgb(176,73,134);
+    background: radial-gradient(circle, rgba(176,73,134,1) 0%, rgba(102,161,231,1) 100%);
     margin: 0;
 }
 
@@ -70,15 +71,10 @@ button{
 
 }
 
-.button #t{
-    background-image: url('./midias/backspace.png');
+.button-gray img{
+   width: 30px;
+   height: 30px;
+   background-color: #333;
+   justify-content: center;
+   align-items: center;
 }
-
-/*npm init-y
-/*index.js
-/*express
-/*node index.js
-/*acesso na web
-
-/* ajax (pedido/requisição)
-/* fetch (cria requisição http)
