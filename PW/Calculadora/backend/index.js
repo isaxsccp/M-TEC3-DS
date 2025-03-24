@@ -3,11 +3,6 @@
             //o uso do POST envia a requisicao pro back
             //
 
-// esse index.js serve o nosso backend da calculadora
-//aqui tem os imports da aplicacao
-            //o uso do POST envia a requisicao pro back
-            //
-
 import express from 'express';
 import path from 'path'; 
 import { fileURLToPath } from 'url';
